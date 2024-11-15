@@ -1,0 +1,8 @@
+*.mp3
+*.tgz
+*.tar
+*.gz
+*.vscode
+__pycache__/*
+rasa-env/
+*.rasa/*
