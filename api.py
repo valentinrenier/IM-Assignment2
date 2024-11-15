@@ -1,8 +1,9 @@
 from github import Github
 from github import Auth
+from secret import token
 
 # using an access token
-auth = Auth.Token("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")
+auth = Auth.Token(token)
 
 # Public Web Github
 try :

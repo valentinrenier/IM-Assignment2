@@ -1,0 +1,25 @@
+version: "3.1"
+
+rules:
+
+- rule: Greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: List organizations
+  steps:
+  - intent: list_organizations
+  - action: action_list_organizations
+
+- rule: List user repositories
+  steps:
+  - intent: list_user_repos
+  - action: action_list_organizations
+
+
+
+# - rule: Goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye

@@ -1,0 +1,45 @@
+version: '3.1'
+intents:
+ - greet
+ - list_user_repos
+ - list_organizations
+entities:
+- place
+- switch
+- shape
+- color
+slots:
+  switch:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: switch
+  place:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: place
+  shape:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: shape
+  color:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: color
+responses:
+  utter_greet:
+  - text: Bonjour, Comment puis-je vous aider ?
+actions:
+- action_greet_user
+- action_list_organizations
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

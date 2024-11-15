@@ -1,0 +1,32 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Bonjour assistant
+    - Salut
+    - Salut assistant
+
+- intent: affirm
+  examples: |
+    - Oui
+    - Tout à fait
+    - Ok
+- intent: list_organizations
+  examples: |
+    - Quelles sont mes organisations 
+    - Liste toutes mes organisations  
+    - Montre moi mes organisations 
+    - Quelles organisations ai-je 
+    - Je veux voir mes organisations 
+    - Affiche mes organisations 
+    - Donne moi les organisations auxquelles j’appartiens
+    - Liste les organisations dans lesquelles je suis 
+    - A quelles organisations appartiens-je  
+    - Dans quelles organisations suis-je 
+- intent: list_user_repos
+  examples: |
+    - Quels sont mes dépôts 
+    - Liste tous mes dépôts  
+    - Montre moi mes dépôts 
+    - Affiche mes dépôts 
+    - Je veux voir mes dépôts 
