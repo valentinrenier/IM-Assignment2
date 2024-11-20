@@ -1,5 +1,5 @@
 import Levenshtein
-from api import get_user_repos
+from api import user_repos
 
 def closest_word(word_list, target_word):
     if not word_list:
@@ -32,7 +32,7 @@ def get_repo_from_query(query, repo_list):
     return mapped_repo.get(repo)
 
 if __name__ == '__main__':
-    word_list = get_user_repos()
+    word_list = user_repos
 
     target_word = 'de rmi'
 

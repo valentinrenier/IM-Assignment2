@@ -11,10 +11,12 @@ try :
 except :
     print('Could not authenticate')
 
+user_repos = g.get_user().get_repos()
+
 def list_user_repos():
     repo_list = []
     tts_result = ""
-    for repo in g.get_user().get_repos():
+    for repo in user_repos:
         repo_list.append(repo.name)
     for s in repo_list :
         if isinstance(s, str):

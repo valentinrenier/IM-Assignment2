@@ -25,7 +25,7 @@ def get_intent_from_text(text):
 
             # print(f"response : {response.json()}")
             
-            repo = get_repo_from_query(text, get_user_repos())
+            repo = get_repo_from_query(text, user_repos)
             print(f"Repo détecté : {repo}")
             mapped_repo = {"repo_name": repo.full_name} if repo else {}
 
@@ -33,7 +33,10 @@ def get_intent_from_text(text):
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                result = function_to_call(**mapped_repo)  # Appel de la fonction
+                if intent == "get_user_repos":
+                    result = function_to_call(**mapped_repo)  # Appel de la fonction
+                else:
+                    result = function_to_call()
                 tts = gTTS(text=result, lang='fr')
 
                 # Sauvegarder le fichier audio
