@@ -63,6 +63,7 @@ jsonpickle==3.0.4
 jsonschema==4.17.3
 keras==2.12.0
 kiwisolver==1.4.7
+Levenshtein==0.26.1
 libclang==18.1.1
 locket==1.0.0
 Markdown==3.7
@@ -102,11 +103,13 @@ pyrsistent==0.20.0
 python-crfsuite==0.9.11
 python-dateutil==2.8.2
 python-engineio==4.10.1
+python-Levenshtein==0.26.1
 python-socketio==5.11.4
 pytz==2022.7.1
 PyYAML==6.0.2
 questionary==1.10.0
 randomname==0.1.5
+RapidFuzz==3.10.1
 rasa==3.6.20
 rasa-sdk==3.6.2
 redis==4.6.0

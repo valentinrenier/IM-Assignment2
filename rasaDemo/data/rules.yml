@@ -17,6 +17,11 @@ rules:
   - intent: list_user_repos
   - action: action_list_organizations
 
+- rule: List repository contributors
+  steps:
+  - intent: list_repo_contributors
+  - action: action_list_repo_contributors
+
 
 
 # - rule: Goodbye

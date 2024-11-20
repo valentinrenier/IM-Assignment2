@@ -31,5 +31,22 @@ def list_organizations():
             tts_result += f",{s}"
     return tts_result
 
+def list_repo_contributors(repo_name):
+    repo = g.get_repo(repo_name)
+    print("repo to search", repo)
+    contributors = repo.get_contributors()
+    tts_result = ""
+    for contributor in contributors:
+        tts_result += f",{contributor.login}"
+    return tts_result
+
 def greet():
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
+
+
+def get_user_repos():
+    return g.get_user().get_repos()
+
+if __name__ == "__main__":
+    print(get_user_repos())
+    print(list_repo_contributors('valentinrenier/IM-Assignment2'))

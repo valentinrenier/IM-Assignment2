@@ -148,3 +148,23 @@ class ActionListOrganizations(Action):
         
         return []
     
+class ActionListRepoContributors(Action):
+    
+    def name(self) -> Text:
+        return "action_list_repo_contributors"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        write_log("Actions: " + "List repo contributors: " + "enter\n")
+        print("Confiança: ", tracker.latest_message["intent"].get("confidence"))
+        write_log("Confiança: " + str(tracker.latest_message["intent"].get("confidence")) + "\n")
+        
+        msg = {"commande": "list_repo_contributors"}
+        #publish.single(topic="comandos/voz/UI", payload=json.dumps(msg), hostname="localhost")
+        
+        write_log("Actions: " + "List repo contributors: " + "exit\n")
+        
+        return []
+    

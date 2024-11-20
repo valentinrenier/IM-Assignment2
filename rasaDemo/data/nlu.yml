@@ -30,3 +30,15 @@ nlu:
     - Montre moi mes dépôts 
     - Affiche mes dépôts 
     - Je veux voir mes dépôts 
+- intent: list_repo_contributors
+  examples: | 
+    - Affiche la liste des contributeurs de ce dépôt.
+    - Montre-moi les contributeurs de ce dépôt.
+    - Qui a contribué à ce dépôt ?
+    - Liste tous les contributeurs de ce dépôt.
+    - Je veux voir les développeurs de ce dépôt.
+    - Peux-tu montrer tous les participants à ce dépôt ?
+    - Qui sont les contributeurs de ce dépôt ?
+    - Affiche les personnes ayant contribué au code de ce dépôt.
+    - Montre les utilisateurs ayant fait des commits dans ce dépôt.
+    - Qui a participé au développement de ce dépôt ?
