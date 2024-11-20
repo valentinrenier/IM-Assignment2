@@ -12,6 +12,8 @@ except :
     print('Could not authenticate')
 
 user_repos = g.get_user().get_repos()
+last_intent = None
+mapped_repo = None
 
 def list_user_repos():
     repo_list = []
@@ -50,10 +52,26 @@ def list_repo_commits(repo_name):
         tts_result += f",{commit.commit.message}"
     return tts_result
 
+def get_number_of_commits(repo_name):
+    global last_intent
+    last_intent = 'list_repo_commits'
+    global mapped_repo
+    mapped_repo = {"repo_name": repo_name}
+
+    repo = g.get_repo(repo_name)
+    commits = repo.get_commits()
+    return "Il y a " + str(len(list(commits))) + " commits dans le dépôt " + repo_name + ". Voulez-vous que j'énonce la liste des commits ?"
+
 def greet():
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
 
+def affirm():
+    if last_intent:
+        result = intent_functions.get(last_intent)(**mapped_repo)
+        return result
 
+
+intent_functions={'greet':greet, 'affirm':affirm, 'list_user_repos':list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors, 'list_repo_commits':list_repo_commits, 'get_number_of_commits':get_number_of_commits}
 
 if __name__ == "__main__":
-    print(list_repo_commits('robinlafage/RMI'))
+    print(get_number_of_commits("robinlafage/OS430"))

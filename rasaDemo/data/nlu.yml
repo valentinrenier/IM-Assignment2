@@ -11,6 +11,11 @@ nlu:
     - Oui
     - Tout à fait
     - Ok
+- intent: deny
+  examples: |
+    - Non
+    - Pas du tout
+    - Pas vraiment
 - intent: list_organizations
   examples: |
     - Quelles sont mes organisations 
@@ -42,7 +47,7 @@ nlu:
     - Affiche les personnes ayant contribué au code de ce dépôt.
     - Montre les utilisateurs ayant fait des commits dans ce dépôt.
     - Qui a participé au développement de ce dépôt ?
-- intent: list_repo_commits
+- intent: get_number_of_commits
   examples: |
     - Affiche l’historique des commits de ce dépôt.
     - Montre tous les commits de ce dépôt. 

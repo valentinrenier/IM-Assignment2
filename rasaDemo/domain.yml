@@ -53,7 +53,7 @@ actions:
  - action_greet_user
  - action_list_organizations
  - action_list_repo_contributors  
- - action_list_repo_commits  
+#  - action_list_repo_commits  
 
 session_config:
   session_expiration_time: 60
