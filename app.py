@@ -15,7 +15,7 @@ def get_intent_from_text(text):
     rasa_ip = windows_ip or 'localhost'
     rasa_url = f"http://{rasa_ip}:5005/model/parse"  # URL de l'API de Rasa
     payload = {"text": text}
-    intent_functions={"greet":greet,"list_user_repos":list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors}
+    intent_functions={"greet":greet,"list_user_repos":list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors, 'list_repo_commits':list_repo_commits}
     try :
         response = requests.post(rasa_url, json=payload)
         if response.status_code == 200:
@@ -33,7 +33,8 @@ def get_intent_from_text(text):
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                if intent == "list_repo_contributors":
+                intents_with_repo = ['list_repo_contributors', 'list_repo_commits']
+                if intent in intents_with_repo:
                     result = function_to_call(**mapped_repo)  # Appel de la fonction
                 else:
                     result = function_to_call()

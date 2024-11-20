@@ -42,3 +42,15 @@ nlu:
     - Affiche les personnes ayant contribué au code de ce dépôt.
     - Montre les utilisateurs ayant fait des commits dans ce dépôt.
     - Qui a participé au développement de ce dépôt ?
+- intent: list_repo_commits
+  examples: |
+    - Affiche l’historique des commits de ce dépôt.
+    - Montre tous les commits de ce dépôt. 
+    - Je veux voir les derniers commits. 
+    - Peux-tu lister les commits effectués de ce dépôt ? 
+    - Donne-moi l’historique des changements de ce dépôt. 
+    - Affiche les modifications précédentes du dépôt. 
+    - Montre-moi la liste des commits passés de ce dépôt. 
+    - Quel est l’historique des commits de ce dépôt? 
+    - Quels sont les derniers changements effectués du dépôt ? 
+    - Affiche les révisions du dépôt. 

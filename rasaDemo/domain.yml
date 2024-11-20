@@ -4,6 +4,7 @@ intents:
  - list_user_repos
  - list_organizations
  - list_repo_contributors
+ - list_repo_commits  
 
 entities:
  - place
@@ -51,7 +52,8 @@ responses:
 actions:
  - action_greet_user
  - action_list_organizations
- - action_list_repo_contributors  # Ajout de l'action associée à l'intent
+ - action_list_repo_contributors  
+ - action_list_repo_commits  
 
 session_config:
   session_expiration_time: 60

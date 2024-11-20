@@ -22,6 +22,11 @@ rules:
   - intent: list_repo_contributors
   - action: action_list_repo_contributors
 
+- rule: List repository commits
+  steps:
+  - intent: list_repo_commits
+  - action: action_list_repo_commits
+
 
 
 # - rule: Goodbye
