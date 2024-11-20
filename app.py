@@ -33,7 +33,7 @@ def get_intent_from_text(text):
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                if intent == "get_user_repos":
+                if intent == "list_repo_contributors":
                     result = function_to_call(**mapped_repo)  # Appel de la fonction
                 else:
                     result = function_to_call()
