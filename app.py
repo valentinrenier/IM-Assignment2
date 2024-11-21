@@ -11,10 +11,12 @@ app = Flask(__name__)
 CORS(app)
 
 def get_intent_from_text(text):
-    rasa_ip = windows_ip or 'localhost'
+    rasa_ip = 'localhost'
     rasa_url = f"http://{rasa_ip}:5005/model/parse"  # URL de l'API de Rasa
     payload = {"text": text}
-    intent_functions={"greet":greet,"list_user_repos":list_user_repos, 'list_organizations':list_organizations}
+    intent_functions={"greet":greet,
+                        "list_user_repos":list_user_repos, 
+                        'list_organizations':list_organizations}
     try :
         response = requests.post(rasa_url, json=payload)
         if response.status_code == 200:
@@ -88,5 +90,4 @@ def get_windows_ip():
 
 if __name__ == '__main__':
     # Lancer le serveur sur le port 5000
-    windows_ip = get_windows_ip()
     app.run(port=5000, debug=True)
