@@ -2,10 +2,11 @@ import requests
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from api import list_user_repos, list_organizations, greet
+from api import *
 from gtts import gTTS
 import os
 import pygame
+from util import *
 
 app = Flask(__name__)
 CORS(app)
@@ -14,20 +15,28 @@ def get_intent_from_text(text):
     rasa_ip = 'localhost'
     rasa_url = f"http://{rasa_ip}:5005/model/parse"  # URL de l'API de Rasa
     payload = {"text": text}
-    intent_functions={"greet":greet,
-                        "list_user_repos":list_user_repos, 
-                        'list_organizations':list_organizations}
     try :
         response = requests.post(rasa_url, json=payload)
         if response.status_code == 200:
             intent = response.json().get("intent", {}).get("name")
             confidence = response.json().get("intent", {}).get("confidence")
             print(f"Intent détecté : {intent} (confiance : {confidence})")
+
+            # print(f"response : {response.json()}")
+            
+            repo = get_repo_from_query(text, user_repos)
+            print(f"Repo détecté : {repo}")
+            mapped_repo = {"repo_name": repo.full_name} if repo else {}
+
             function_to_call = intent_functions.get(intent)
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                result = function_to_call()  # Appel de la fonction
+                intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits']
+                if intent in intents_with_repo:
+                    result = function_to_call(**mapped_repo)  # Appel de la fonction
+                else:
+                    result = function_to_call()
                 tts = gTTS(text=result, lang='fr')
 
                 # Sauvegarder le fichier audio

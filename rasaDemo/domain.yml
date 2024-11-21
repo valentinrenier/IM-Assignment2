@@ -3,11 +3,16 @@ intents:
  - greet
  - list_user_repos
  - list_organizations
+ - list_repo_contributors
+ - list_repo_commits  
+
 entities:
-- place
-- switch
-- shape
-- color
+ - place
+ - switch
+ - shape
+ - color
+ - repo  # Ajout de l'entité pour les dépôts
+
 slots:
   switch:
     type: text
@@ -33,12 +38,22 @@ slots:
     mappings:
     - type: from_entity
       entity: color
+  repo:  # Ajout du slot pour stocker le nom du dépôt
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: repo
+
 responses:
   utter_greet:
-  - text: Bonjour, Comment puis-je vous aider ?
+  - text: Bonjour, comment puis-je vous aider ?
+
 actions:
-- action_greet_user
-- action_list_organizations
+ - action_greet_user
+ - action_list_organizations
+ - action_list_repo_contributors  
+#  - action_list_repo_commits  
 
 session_config:
   session_expiration_time: 60
