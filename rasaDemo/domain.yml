@@ -4,46 +4,29 @@ intents:
  - list_user_repos
  - list_organizations
  - list_repo_contributors
- - list_repo_commits  
+ - get_number_of_commits  
+ - create_repo
+ - delete_repo
+ - create_organization
+ - delete_organization
 
 entities:
- - place
- - switch
- - shape
- - color
  - repo  # Ajout de l'entité pour les dépôts
+ - orga
 
 slots:
-  switch:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: switch
-  place:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: place
-  shape:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: shape
-  color:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: color
   repo:  # Ajout du slot pour stocker le nom du dépôt
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
     - type: from_entity
       entity: repo
+  orga:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: orga
 
 responses:
   utter_greet:
@@ -53,7 +36,11 @@ actions:
  - action_greet_user
  - action_list_organizations
  - action_list_repo_contributors  
-#  - action_list_repo_commits  
+ - action_list_repo_commits  
+ - action_create_repo
+ - action_delete_repo
+ - action_create_organization
+ - action_delete_organization
 
 session_config:
   session_expiration_time: 60

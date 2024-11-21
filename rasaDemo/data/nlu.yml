@@ -11,11 +11,15 @@ nlu:
     - Oui
     - Tout à fait
     - Ok
+    - C'est ça
+    - Parfaitement
+    - Ouais
 - intent: deny
   examples: |
     - Non
     - Pas du tout
     - Pas vraiment
+    - Absolument pas
 - intent: list_organizations
   examples: |
     - Quelles sont mes organisations 
@@ -59,3 +63,53 @@ nlu:
     - Quel est l’historique des commits de ce dépôt? 
     - Quels sont les derniers changements effectués du dépôt ? 
     - Affiche les révisions du dépôt. 
+- intent: create_repo
+  examples : |
+    - Crée un dépôt nommé [dépôt](repo)
+    - Ajoute un dépôt appelé [dépôt](repo)
+    - Je veux un nouveau dépôt nommé [dépôt](repo)
+    - Nouveau dépôt, appelle-le [dépôt](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [dépôt](repo)
+- intent: delete_repo
+  examples : |
+    - Supprime le dépôt [dépôt](repo)
+    - Efface le dépôt [dépôt](repo)
+    - Je veux supprimer le dépôt [dépôt](repo)
+    - Retire le dépôt [dépôt](repo) de mes dépôts GitHub
+    - Retire le dépôt [dépôt](repo)
+- intent: create_organization
+  examples : |
+    - Crée une organisation nommée [organisation]{"entity": "orga"}
+    - Ajoute une organisation appelée [organisation]{"entity": "orga"}
+    - Je veux une nouvelle organisation nommée [organisation]{"entity": "orga"}
+    - Nouvelle organisation, appelle-la [organisation]{"entity": "orga"}
+    - Lance la création d’une nouvelle organisation, avec le nom [organisation]{"entity": "orga"}
+    - Crée une organisation nommée [abc-213]{"entity": "orga"}
+    - Ajoute une organisation appelée [abc-213]{"entity": "orga"}
+    - Je veux une nouvelle organisation nommée [abc-213]{"entity": "orga"}
+    - Nouvelle organisation, appelle-la [abc-213]{"entity": "orga"}
+    - Lance la création d’une nouvelle organisation, avec le nom [abc-213]{"entity": "orga"}
+    - Crée une organisation nommée [52this2]{"entity": "orga"}
+    - Ajoute une organisation appelée [52this2]{"entity": "orga"}
+    - Je veux une nouvelle organisation nommée [52this2]{"entity": "orga"}
+    - Nouvelle organisation, appelle-la [52this2]{"entity": "orga"}
+    - Lance la création d’une nouvelle organisation, avec le nom [52this2]{"entity": "orga"}
+    - Crée une organisation nommée [organ542303isation]{"entity": "orga"}
+    - Ajoute une organisation appelée [organ542303isation]{"entity": "orga"}
+    - Je veux une nouvelle organisation nommée [organ542303isation]{"entity": "orga"}
+    - Nouvelle organisation, appelle-la [organ542303isation]{"entity": "orga"}
+    - Lance la création d’une nouvelle organisation, avec le nom [organ542303isation]{"entity": "orga"}
+- intent: delete_organization
+  examples : |
+    - Supprime l’organisation [organisation]{"entity": "orga"}
+    - Efface l’organisation [organisation]{"entity": "orga"}
+    - Je veux supprimer l’organisation [organisation]{"entity": "orga"}
+    - Retire l’organisation [organisation]{"entity": "orga"} de mes organisations GitHub
+    - Retire l’organisation [organisation]{"entity": "orga"}
+
+- regex: orga
+  examples: |
+    - [a-zA-Z] 
+- regex: repo
+  examples: |
+    - [a-zA-Z]

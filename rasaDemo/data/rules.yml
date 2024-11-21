@@ -22,11 +22,30 @@ rules:
   - intent: list_repo_contributors
   - action: action_list_repo_contributors
 
-# - rule: List repository commits
-#   steps:
-#   - intent: list_repo_commits
-#   - action: action_list_repo_commits
+- rule: List repository commits
+  steps:
+  - intent: get_number_of_commits
+  - action: action_list_repo_commits
 
+- rule: Create repository
+  steps:
+  - intent: create_repo
+  - action: action_create_repo
+
+- rule: Delete repository
+  steps:
+  - intent: delete_repo
+  - action: action_delete_repo
+
+- rule: Create organization
+  steps:
+  - intent: create_organization
+  - action: action_create_organization
+
+- rule: Delete organization
+  steps:
+  - intent: delete_organization
+  - action: action_delete_organization
 
 
 # - rule: Goodbye

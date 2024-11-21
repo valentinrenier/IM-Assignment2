@@ -22,7 +22,7 @@ def get_intent_from_text(text):
             confidence = response.json().get("intent", {}).get("confidence")
             print(f"Intent détecté : {intent} (confiance : {confidence})")
 
-            # print(f"response : {response.json()}")
+            print(f"response : {response.json()}")
             
             repo = get_repo_from_query(text, user_repos)
             print(f"Repo détecté : {repo}")
@@ -75,27 +75,6 @@ def receive_texte():
     get_intent_from_text(texte_recu)
 
     return jsonify({"message": "Texte reçu avec succès", "text": texte_recu}), 200
-
-def get_windows_ip():
-    try:
-        # Ouvrir le fichier /etc/resolv.conf
-        with open('/etc/resolv.conf', 'r') as f:
-            # Lire toutes les lignes
-            lines = f.readlines()
-
-        # Rechercher la ligne qui contient 'nameserver'
-        for line in lines:
-            if line.startswith('nameserver'):
-                # Extraire l'IP de la ligne
-                ip_address = line.split()[1]
-                return ip_address
-
-        # Si aucune ligne 'nameserver' n'est trouvée
-        return None
-    except Exception as e:
-        print(f"Erreur lors de la lecture du fichier /etc/resolv.conf: {e}")
-        return None
-
 
 if __name__ == '__main__':
     # Lancer le serveur sur le port 5000
