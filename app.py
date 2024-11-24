@@ -24,21 +24,25 @@ def get_intent_from_text(text):
 
             print(f"response : {response.json()}")
             
+            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits']
+            intents_with_new_repo = ['create_repo', 'delete_repo']
+
+
             try:
                 repo = response.json().get("entities", [{}])[0].get("value")
-                repo = get_repo_from_query(repo, user_repos)
+                if intent in intents_with_repo:
+                    repo = get_repo_from_query(repo, user_repos)
                 print(f"Repo détecté : {repo}")
             except Exception as e:
                 print("Aucun repo détecté.")
                 repo = None
-            mapped_repo = {"repo_name": repo.full_name} if repo else {}
+            mapped_repo = {"repo": repo} if repo else {}
 
             function_to_call = intent_functions.get(intent)
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits']
-                if intent in intents_with_repo:
+                if intent in intents_with_repo or intent in intents_with_new_repo:
                     result = function_to_call(**mapped_repo)  # Appel de la fonction
                 else:
                     result = function_to_call()
