@@ -24,8 +24,8 @@ def get_intent_from_text(text):
 
             print(f"response : {response.json()}")
             
-            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits']
-            intents_with_new_repo = ['create_repo', 'delete_repo']
+            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo']
+            intents_with_new_repo = ['create_repo']
 
 
             try:
