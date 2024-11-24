@@ -41,28 +41,41 @@ nlu:
     - Je veux voir mes dépôts 
 - intent: list_repo_contributors
   examples: | 
-    - Affiche la liste des contributeurs de ce dépôt.
-    - Montre-moi les contributeurs de ce dépôt.
-    - Qui a contribué à ce dépôt ?
-    - Liste tous les contributeurs de ce dépôt.
-    - Je veux voir les développeurs de ce dépôt.
-    - Peux-tu montrer tous les participants à ce dépôt ?
-    - Qui sont les contributeurs de ce dépôt ?
-    - Affiche les personnes ayant contribué au code de ce dépôt.
-    - Montre les utilisateurs ayant fait des commits dans ce dépôt.
-    - Qui a participé au développement de ce dépôt ?
+    - Affiche la liste des contributeurs de [mon-depot](repo).
+    - Montre-moi les contributeurs de [projet-x](repo).
+    - Qui a contribué à [alpha-repo](repo) ?
+    - Liste tous les contributeurs de [sandbox](repo).
+    - Je veux voir les développeurs de [demo-repo](repo).
+    - Peux-tu montrer tous les participants à [codebase](repo) ?
+    - Qui sont les contributeurs de [test-repository](repo) ?
+    - Affiche les personnes ayant contribué au code de [dev-project](repo).
+    - Montre les utilisateurs ayant fait des commits dans [main-repo](repo).
+    - Qui a participé au développement de [open-source](repo) ?
+    - Affiche les contributeurs pour le dépôt nommé [framework-alpha](repo).
+    - Montre-moi les développeurs actifs dans [service-api](repo).
+    - Qui sont les principaux contributeurs de [research-data](repo) ?
+    - Peux-tu lister les contributeurs de [analytics-tool](repo) ?
+    - Affiche les participants de [mobile-app](repo).
+    - Qui a fait des modifications dans [config-files](repo) ?
 - intent: get_number_of_commits
   examples: |
-    - Affiche l’historique des commits de ce dépôt.
-    - Montre tous les commits de ce dépôt. 
-    - Je veux voir les derniers commits. 
-    - Peux-tu lister les commits effectués de ce dépôt ? 
-    - Donne-moi l’historique des changements de ce dépôt. 
-    - Affiche les modifications précédentes du dépôt. 
-    - Montre-moi la liste des commits passés de ce dépôt. 
-    - Quel est l’historique des commits de ce dépôt? 
-    - Quels sont les derniers changements effectués du dépôt ? 
-    - Affiche les révisions du dépôt. 
+    - Affiche l’historique des commits de [mon-depot](repo).
+    - Montre tous les commits de [projet-x](repo).
+    - Je veux voir les derniers commits de [sandbox](repo).
+    - Peux-tu lister les commits effectués dans [demo-repo](repo) ?
+    - Donne-moi l’historique des changements de [codebase](repo).
+    - Affiche les modifications précédentes de [test-repository](repo).
+    - Montre-moi la liste des commits passés de [dev-project](repo).
+    - Quel est l’historique des commits de [main-repo](repo) ?
+    - Quels sont les derniers changements effectués dans [open-source](repo) ?
+    - Affiche les révisions de [framework-alpha](repo).
+    - Je veux voir les derniers commits de [service-api](repo).
+    - Montre-moi les commits récents dans [analytics-tool](repo).
+    - Quels changements ont été effectués dans [mobile-app](repo) ?
+    - Donne-moi la liste des commits pour [config-files](repo).
+    - Peux-tu afficher l’historique des modifications dans [research-data](repo) ?
+    - Affiche les commits passés pour le dépôt [desktop-app](repo).
+    - Montre-moi les révisions pour [website-assets](repo).
 - intent: create_repo
   examples: |
     - Crée un dépôt nommé [mon-depot](repo)

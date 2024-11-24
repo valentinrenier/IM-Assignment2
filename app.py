@@ -24,8 +24,13 @@ def get_intent_from_text(text):
 
             print(f"response : {response.json()}")
             
-            repo = get_repo_from_query(text, user_repos)
-            print(f"Repo détecté : {repo}")
+            try:
+                repo = response.json().get("entities", [{}])[0].get("value")
+                repo = get_repo_from_query(repo, user_repos)
+                print(f"Repo détecté : {repo}")
+            except Exception as e:
+                print("Aucun repo détecté.")
+                repo = None
             mapped_repo = {"repo_name": repo.full_name} if repo else {}
 
             function_to_call = intent_functions.get(intent)
