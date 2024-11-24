@@ -64,41 +64,127 @@ nlu:
     - Quels sont les derniers changements effectués du dépôt ? 
     - Affiche les révisions du dépôt. 
 - intent: create_repo
-  examples : |
-    - Crée un dépôt nommé [dépôt](repo)
-    - Ajoute un dépôt appelé [dépôt](repo)
-    - Je veux un nouveau dépôt nommé [dépôt](repo)
-    - Nouveau dépôt, appelle-le [dépôt](repo)
-    - Lance la création d’un nouveau dépôt, avec le nom [dépôt](repo)
+  examples: |
+    - Crée un dépôt nommé [mon-depot](repo)
+    - Ajoute un dépôt appelé [projet-x](repo)
+    - Je veux un nouveau dépôt nommé [alpha-repo](repo)
+    - Nouveau dépôt, appelle-le [sandbox](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [demo-repo](repo)
+    - Crée un dépôt nommé [codebase](repo)
+    - Ajoute un dépôt appelé [test-repository](repo)
+    - Je veux un nouveau dépôt nommé [dev-project](repo)
+    - Nouveau dépôt, appelle-le [main-repo](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [open-source](repo)
+    - Crée un dépôt nommé [archive-repo](repo)
+    - Ajoute un dépôt appelé [experimental-project](repo)
+    - Je veux un nouveau dépôt nommé [team-repo](repo)
+    - Nouveau dépôt, appelle-le [template-project](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [legacy-code](repo)
+    - Crée un dépôt nommé [backup-repo](repo)
+    - Ajoute un dépôt appelé [personal-project](repo)
+    - Je veux un nouveau dépôt nommé [new-project](repo)
+    - Nouveau dépôt, appelle-le [final-build](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [prototype-repo](repo)
+    - Crée un dépôt nommé [testing-repo](repo)
+    - Ajoute un dépôt appelé [documentation](repo)
+    - Je veux un nouveau dépôt nommé [framework-alpha](repo)
+    - Nouveau dépôt, appelle-le [service-api](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [website-assets](repo)
+    - Crée un dépôt nommé [analytics-tool](repo)
+    - Ajoute un dépôt appelé [mobile-app](repo)
+    - Je veux un nouveau dépôt nommé [desktop-app](repo)
+    - Nouveau dépôt, appelle-le [config-files](repo)
+    - Lance la création d’un nouveau dépôt, avec le nom [research-data](repo)
+
 - intent: delete_repo
-  examples : |
-    - Supprime le dépôt [dépôt](repo)
-    - Efface le dépôt [dépôt](repo)
-    - Je veux supprimer le dépôt [dépôt](repo)
-    - Retire le dépôt [dépôt](repo) de mes dépôts GitHub
-    - Retire le dépôt [dépôt](repo)
+  examples: |
+    - Supprime le dépôt [repo1](repo)
+    - Efface le dépôt [repository](repo)
+    - Je veux supprimer le dépôt [mon](repo)
+    - Retire le dépôt [test](repo) de mes dépôts GitHub
+    - Retire le dépôt [alpha-repository](repo)
+    - Enlève le dépôt [demo](repo) de la liste
+    - Supprime un dépôt appelé [codebase1](repo)
+    - Efface le dépôt nommé [project-x](repo)
+    - Je souhaite supprimer le dépôt nommé [test-project](repo)
+    - Supprime définitivement le dépôt [final](repo)
+    - Je veux enlever le dépôt appelé [archive](repo)
+    - Efface immédiatement le dépôt [github](repo)
+    - Supprime de mes dépôts le dépôt [template](repo)
+    - Enlève complètement le dépôt [legacy](repo)
+    - Supprime un dépôt Git appelé [open-source](repo)
+    - Efface un dépôt nommé [repov1](repo)
+    - Supprime de la liste le dépôt [main](repo)
+    - Je veux retirer le dépôt [example](repo) de mon espace
+    - Retire un dépôt avec le nom [myprivate](repo)
+    - Enlève de mes projets le dépôt [sandbox](repo)
+    - Supprime un dépôt de nom [experimental](repo)
+    - Efface le dépôt [backup](repo) de mes fichiers
+    - Supprime complètement le dépôt [obsolete-repo](repo)
+    - Je veux effacer le dépôt [personal-repo](repo)
+    - Retire le dépôt qui s'appelle [projet-test](repo)
+
 - intent: create_organization
   examples : |
+    - Crée une nouvelle organisation, son nom est [xyz](orga)
+    - Ajoute une organisation avec le nom [alpha](orga)
+    - Je veux créer une organisation qu’on appellera [team beta](orga)
+    - Organise la création d’une organisation nommée [groupe delta](orga)
+    - Nouvelle organisation : donne-lui le nom [compagnie épsilon](orga)
+    - Lance une organisation qu’on nommera [orga zeta](orga)
+    - Mets en place une organisation, elle s’appellera [eta](orga)
+    - Ajoute une nouvelle organisation avec le titre [institution theta](orga)
+    - Je souhaite créer une organisation portant le nom [projet iota](orga)
+    - Inscris une organisation sous le nom [bureau kappa](orga)
+    - Enregistre une organisation appelée [société](orga)
+    - Crée pour moi une organisation avec le label [agence mu](orga)
+    - Nouvelle entité organisationnelle, appelle-la [firme nu](orga)
+    - Démarre une organisation baptisée [équipe xi](orga)
+    - J’aimerais une organisation, nommée [collectif](orga)
+    - Génère une organisation, elle s’appellera [entité Pi](orga)
+    - Ajoute une organisation qui portera le nom [entreprise rho](orga)
+    - Crée une organisation appelée [Association igma](orga)
+    - Mets en place une organisation nommée [fondation tau](orga)
+    - Développe une organisation qu’on appellera [organisatio](orga)
+    - Je voudrais une organisation ayant pour nom [consortium Phi](orga)
+    - Établis une organisation avec le nom [Institut chi](orga)
+    - Enregistre une nouvelle organisation qu’on nommera [psi](orga)
+    - Ajoute une organisation sous le nom [union omega](orga)
     - Crée une organisation nommée [organisation](orga)
-    - Crée une organisation nommée [test](orga)
-    - Crée une organisation nommée [nextname](orga)
-    - Crée une organisation nommée [onestbig](orga)
-    - Crée une organisation nommée [jeveuxuneorga](orga)
-    - Crée une organisation nommée [matierecoloree](orga)
-    - Crée une organisation nommée [bousindeporc](orga)
-    - Crée une organisation nommée [ttttaasasaaaa](orga)
-    - Crée une organisation nommée [bonjour](orga)
-  # - Ajoute une organisation appelée [organisation](orga)
-  # - Je veux une nouvelle organisation nommée [organisation](orga)
-  # - Nouvelle organisation, appelle-la [organisation](orga)
-  # - Lance la création d’une nouvelle organisation, avec le nom [organisation](orga)
+    - Je veux que tu crée une organisation qui s'appelle [michel](orga)
 - intent: delete_organization
-  examples : |
-    - Supprime l’organisation [organisation](orga)
-    - Efface l’organisation [organisation](orga)
-    - Je veux supprimer l’organisation [organisation](orga)
-    - Retire l’organisation [organisation](orga) de mes organisations GitHub
+  examples: |
+    - Supprime l’organisation [startup](orga)
+    - Efface l’organisation [groupe](orga)
+    - Je veux supprimer l’organisation [team](orga)
+    - Retire l’organisation [collectif](orga) de mes organisations GitHub
     - Retire l’organisation [organisation](orga)
+    - Supprime l’organisation [societe](orga)
+    - Efface l’organisation [fondation](orga)
+    - Je veux supprimer l’organisation [consortium](orga)
+    - Retire l’organisation [institut](orga) de mes organisations GitHub
+    - Retire l’organisation [association](orga)
+    - Supprime l’organisation [club](orga)
+    - Efface l’organisation [structure](orga)
+    - Je veux supprimer l’organisation [groupe_dev](orga)
+    - Retire l’organisation [collectif_pro](orga) de mes organisations GitHub
+    - Retire l’organisation [organisation_test](orga)
+    - Supprime l’organisation [firme](orga)
+    - Efface l’organisation [entreprise](orga)
+    - Je veux supprimer l’organisation [bureaux](orga)
+    - Retire l’organisation [projet](orga) de mes organisations GitHub
+    - Retire l’organisation [alliance](orga)
+    - Supprime l’organisation [agence](orga)
+    - Efface l’organisation [compagnie](orga)
+    - Je veux supprimer l’organisation [union](orga)
+    - Retire l’organisation [entite](orga) de mes organisations GitHub
+    - Retire l’organisation [plateforme](orga)
+    - Supprime l’organisation [startup_pro](orga)
+    - Efface l’organisation [reseau](orga)
+    - Je veux supprimer l’organisation [incubateur](orga)
+    - Retire l’organisation [organisme](orga)
+    - Retire l’organisation [centre](orga)
+
 
 - regex: orga
   examples: |
