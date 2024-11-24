@@ -1,6 +1,7 @@
 from github import Github
 from github import Auth
 from secret import token
+import inspect
 
 # using an access token
 auth = Auth.Token(token)
@@ -18,6 +19,8 @@ mapped_repo = None
 def list_user_repos():
     repo_list = []
     tts_result = ""
+    global user_repos
+    user_repos = g.get_user().get_repos()
     for repo in user_repos:
         repo_list.append(repo.name)
     for s in repo_list :
@@ -30,9 +33,10 @@ def list_organizations():
     tts_result = ""
     for org in g.get_user().get_orgs():
         orgs_list.append(org.name)
+    print(orgs_list)
     for s in orgs_list :
         if isinstance(s, str):
-            tts_result += f",{s}"
+            tts_result += f",{s}" 
     return tts_result
 
 def list_repo_contributors(repo):
@@ -63,6 +67,8 @@ def get_number_of_commits(repo):
 def create_repo(repo):
     try:
         g.get_user().create_repo(repo)
+        global user_repos
+        user_repos = g.get_user().get_repos()
         return f"Le dépôt '{repo}' a été créé avec succès."
     except Exception as e:
         return f"Le dépôt '{repo}' n'a pas pu être créé. Erreur : {e.data['errors'][0]['message']}"
@@ -78,6 +84,8 @@ def delete_repo(repo):
 def confirm_delete_repo(repo):
     try:
         repo.delete()
+        global user_repos
+        user_repos = g.get_user().get_repos()
         return f"Le dépôt '{repo.full_name}' a été supprimé avec succès."
     except Exception as e:
         return f"Le dépôt '{repo.full_name}' n'a pas pu être supprimé. Erreur : {e.data['errors'][0]['message']}"
@@ -94,13 +102,49 @@ def greet():
 
 def affirm():
     if next_intent:
-        result = intent_functions.get(next_intent)(**mapped_repo)
+        signature = inspect.signature(intent_functions.get(next_intent))
+        if len(signature.parameters) > 0 :
+            result = intent_functions.get(next_intent)(**mapped_repo)
+        else : 
+            result = intent_functions.get(next_intent)()
         return result
 
+def deny():
+    try :
+        global next_intent
+        if next_intent:
+            next_intent = None
+    except :
+        print('Next_intent is not set')
+    return "Action annulée avec succès"
+
+def not_sure_of_the_intent(intent, parameter):
+    global next_intent
+    next_intent = intent
+    global mapped_repo
+    if not parameter is None :
+        mapped_repo = {"repo": parameter['repo']}
+    return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent}'
+
+def intent_not_understood():
+    return "Je suis désolé, mais je n'ai pas réussi à interpréter votre demande. Pouvez vous répéter s'il vous plaît ?"
 
 
 
-intent_functions={'greet':greet, 'affirm':affirm, 'list_user_repos':list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors, 'list_repo_commits':list_repo_commits, 'get_number_of_commits':get_number_of_commits, 'create_repo':create_repo, 'delete_repo':delete_repo, 'confirm_delete_repo':confirm_delete_repo, 'list_branches':list_branches}
+
+intent_functions={'greet':greet, 
+                  'affirm':affirm, 
+                  'list_user_repos':list_user_repos, 
+                  'list_organizations':list_organizations, 
+                  'list_repo_contributors':list_repo_contributors, 
+                  'list_repo_commits':list_repo_commits, 
+                  'get_number_of_commits':get_number_of_commits, 
+                  'create_repo':create_repo, 'delete_repo':delete_repo, 
+                  'confirm_delete_repo':confirm_delete_repo, 
+                  'list_branches':list_branches, 
+                  'deny':deny,
+                  'not_sure_of_the_intent':not_sure_of_the_intent,
+                  'intent_not_understood':intent_not_understood}
 
 if __name__ == "__main__":
     print(get_number_of_commits("robinlafage/RMI"))

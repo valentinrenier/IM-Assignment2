@@ -22,8 +22,14 @@ def get_intent_from_text(text):
             confidence = response.json().get("intent", {}).get("confidence")
             print(f"Intent détecté : {intent} (confiance : {confidence})")
 
-            print(f"response : {response.json()}")
-            
+            # print(f"response : {response.json()}")
+            if confidence > 0.7 : 
+                function_to_call = intent_functions.get(intent)
+            elif confidence > 0.3 :
+                function_to_call = intent_functions.get('not_sure_of_the_intent')
+            else : 
+                function_to_call = intent_functions.get('intent_not_understood')
+
             intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches']
             intents_with_new_repo = ['create_repo']
 
@@ -32,18 +38,24 @@ def get_intent_from_text(text):
                 repo = response.json().get("entities", [{}])[0].get("value")
                 if intent in intents_with_repo:
                     repo = get_repo_from_query(repo, user_repos)
-                print(f"Repo détecté : {repo}")
+                    print(f"Repo détecté : {repo}")
             except Exception as e:
-                print("Aucun repo détecté.")
+                print("Aucun repo ni orga détecté.")
                 repo = None
             mapped_repo = {"repo": repo} if repo else {}
 
-            function_to_call = intent_functions.get(intent)
+            
 
             # Appeler la fonction si elle existe
             if function_to_call:
-                if intent in intents_with_repo or intent in intents_with_new_repo:
-                    result = function_to_call(**mapped_repo)  # Appel de la fonction
+                if function_to_call == not_sure_of_the_intent :
+                    repo = mapped_repo['repo'] or ''
+                    result = function_to_call(intent, repo)
+                elif intent in intents_with_repo or intent in intents_with_new_repo:
+                    if mapped_repo == {} :
+                        result = intent_functions.get('intent_not_understood')
+                    else : 
+                        result = function_to_call(mapped_repo['repo'])
                 else:
                     result = function_to_call()
                 tts = gTTS(text=result, lang='fr')
@@ -55,8 +67,13 @@ def get_intent_from_text(text):
                 pygame.mixer.init()
 
                 # Charger et jouer le fichier audio
-                pygame.mixer.music.load("message.mp3")
-                pygame.mixer.music.play()
+                try :
+                    print('Reading the mp3')
+                    pygame.mixer.music.load("message.mp3")
+                    pygame.mixer.music.play()
+                    print("finished reading the mp3")
+                except Exception as e :
+                    print(f"Could not read the message : {e}")
             else:
                 print("Intent non pris en charge.")
             return intent

@@ -49,7 +49,6 @@ nlu:
     - Peux-tu montrer tous les participants à [codebase](repo) ?
     - Qui sont les contributeurs de [test-repository](repo) ?
     - Affiche les personnes ayant contribué au code de [dev-project](repo).
-    - Montre les utilisateurs ayant fait des commits dans [main-repo](repo).
     - Qui a participé au développement de [open-source](repo) ?
     - Affiche les contributeurs pour le dépôt nommé [framework-alpha](repo).
     - Montre-moi les développeurs actifs dans [service-api](repo).
@@ -59,22 +58,22 @@ nlu:
     - Qui a fait des modifications dans [config-files](repo) ?
 - intent: get_number_of_commits
   examples: |
-    - Affiche l’historique des commits de [mon-depot](repo).
-    - Montre tous les commits de [projet-x](repo).
-    - Je veux voir les derniers commits de [sandbox](repo).
-    - Peux-tu lister les commits effectués dans [demo-repo](repo) ?
+    - Affiche l’historique des changements de [mon-depot](repo).
+    - Montre tous les changements de [projet-x](repo).
+    - Je veux voir les derniers changements de [sandbox](repo).
+    - Peux-tu lister les changements effectués dans [demo-repo](repo) ?
     - Donne-moi l’historique des changements de [codebase](repo).
     - Affiche les modifications précédentes de [test-repository](repo).
-    - Montre-moi la liste des commits passés de [dev-project](repo).
-    - Quel est l’historique des commits de [main-repo](repo) ?
+    - Montre-moi la liste des changements passés de [dev-project](repo).
+    - Quel est l’historique des changements de [main-repo](repo) ?
     - Quels sont les derniers changements effectués dans [open-source](repo) ?
     - Affiche les révisions de [framework-alpha](repo).
-    - Je veux voir les derniers commits de [service-api](repo).
-    - Montre-moi les commits récents dans [analytics-tool](repo).
+    - Je veux voir les derniers changements de [service-api](repo).
+    - Montre-moi les changements récents dans [analytics-tool](repo).
     - Quels changements ont été effectués dans [mobile-app](repo) ?
-    - Donne-moi la liste des commits pour [config-files](repo).
+    - Donne-moi la liste des changements pour [config-files](repo).
     - Peux-tu afficher l’historique des modifications dans [research-data](repo) ?
-    - Affiche les commits passés pour le dépôt [desktop-app](repo).
+    - Affiche les changements passés pour le dépôt [desktop-app](repo).
     - Montre-moi les révisions pour [website-assets](repo).
 - intent: create_repo
   examples: |
@@ -137,67 +136,6 @@ nlu:
     - Je veux effacer le dépôt [personal-repo](repo)
     - Retire le dépôt qui s'appelle [projet-test](repo)
 
-- intent: create_organization
-  examples : |
-    - Crée une nouvelle organisation, son nom est [xyz](orga)
-    - Ajoute une organisation avec le nom [alpha](orga)
-    - Je veux créer une organisation qu’on appellera [team beta](orga)
-    - Organise la création d’une organisation nommée [groupe delta](orga)
-    - Nouvelle organisation : donne-lui le nom [compagnie épsilon](orga)
-    - Lance une organisation qu’on nommera [orga zeta](orga)
-    - Mets en place une organisation, elle s’appellera [eta](orga)
-    - Ajoute une nouvelle organisation avec le titre [institution theta](orga)
-    - Je souhaite créer une organisation portant le nom [projet iota](orga)
-    - Inscris une organisation sous le nom [bureau kappa](orga)
-    - Enregistre une organisation appelée [société](orga)
-    - Crée pour moi une organisation avec le label [agence mu](orga)
-    - Nouvelle entité organisationnelle, appelle-la [firme nu](orga)
-    - Démarre une organisation baptisée [équipe xi](orga)
-    - J’aimerais une organisation, nommée [collectif](orga)
-    - Génère une organisation, elle s’appellera [entité Pi](orga)
-    - Ajoute une organisation qui portera le nom [entreprise rho](orga)
-    - Crée une organisation appelée [Association igma](orga)
-    - Mets en place une organisation nommée [fondation tau](orga)
-    - Développe une organisation qu’on appellera [organisatio](orga)
-    - Je voudrais une organisation ayant pour nom [consortium Phi](orga)
-    - Établis une organisation avec le nom [Institut chi](orga)
-    - Enregistre une nouvelle organisation qu’on nommera [psi](orga)
-    - Ajoute une organisation sous le nom [union omega](orga)
-    - Crée une organisation nommée [organisation](orga)
-    - Je veux que tu crée une organisation qui s'appelle [michel](orga)
-- intent: delete_organization
-  examples: |
-    - Supprime l’organisation [startup](orga)
-    - Efface l’organisation [groupe](orga)
-    - Je veux supprimer l’organisation [team](orga)
-    - Retire l’organisation [collectif](orga) de mes organisations GitHub
-    - Retire l’organisation [organisation](orga)
-    - Supprime l’organisation [societe](orga)
-    - Efface l’organisation [fondation](orga)
-    - Je veux supprimer l’organisation [consortium](orga)
-    - Retire l’organisation [institut](orga) de mes organisations GitHub
-    - Retire l’organisation [association](orga)
-    - Supprime l’organisation [club](orga)
-    - Efface l’organisation [structure](orga)
-    - Je veux supprimer l’organisation [groupe_dev](orga)
-    - Retire l’organisation [collectif_pro](orga) de mes organisations GitHub
-    - Retire l’organisation [organisation_test](orga)
-    - Supprime l’organisation [firme](orga)
-    - Efface l’organisation [entreprise](orga)
-    - Je veux supprimer l’organisation [bureaux](orga)
-    - Retire l’organisation [projet](orga) de mes organisations GitHub
-    - Retire l’organisation [alliance](orga)
-    - Supprime l’organisation [agence](orga)
-    - Efface l’organisation [compagnie](orga)
-    - Je veux supprimer l’organisation [union](orga)
-    - Retire l’organisation [entite](orga) de mes organisations GitHub
-    - Retire l’organisation [plateforme](orga)
-    - Supprime l’organisation [startup_pro](orga)
-    - Efface l’organisation [reseau](orga)
-    - Je veux supprimer l’organisation [incubateur](orga)
-    - Retire l’organisation [organisme](orga)
-    - Retire l’organisation [centre](orga)
-
 - intent: list_branches
   examples: |
     - Affiche les branches de [mon-depot](repo)
@@ -216,9 +154,6 @@ nlu:
     - Montre les branches de [config-files](repo)
     - Quelles sont les branches de [research-data](repo)
 
-- regex: orga
-  examples: |
-    - [a-zA-Z] 
 - regex: repo
   examples: |
     - [a-zA-Z] 
