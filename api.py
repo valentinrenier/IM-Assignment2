@@ -56,7 +56,7 @@ def get_number_of_commits(repo):
     global last_intent
     last_intent = 'list_repo_commits'
     global mapped_repo
-    mapped_repo = {"repo_name": repo}
+    mapped_repo = {"repo": repo}
 
     repo = g.get_repo(repo.full_name)
     commits = repo.get_commits()
