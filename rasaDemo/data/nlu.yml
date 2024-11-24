@@ -198,6 +198,23 @@ nlu:
     - Retire l’organisation [organisme](orga)
     - Retire l’organisation [centre](orga)
 
+- intent: list_branches
+  examples: |
+    - Affiche les branches de [mon-depot](repo)
+    - Montre toutes les branches de [projet-x](repo)
+    - Je veux voir les branches de [sandbox](repo)
+    - Peux-tu lister les branches de [demo-repo](repo) ?
+    - Donne-moi la liste des branches de [codebase](repo)
+    - Affiche les branches de [test-repository](repo)
+    - Montre les branches de [dev-project](repo)
+    - Quelles sont les branches de [main-repo](repo) ?
+    - Affiche les branches de [open-source](repo)
+    - Montre les branches de [framework-alpha](repo)
+    - Peux-tu lister les branches de [service-api](repo) ?
+    - Donne-moi la liste des branches de [analytics-tool](repo)
+    - Affiche les branches de [mobile-app](repo)
+    - Montre les branches de [config-files](repo)
+    - Quelles sont les branches de [research-data](repo)
 
 - regex: orga
   examples: |

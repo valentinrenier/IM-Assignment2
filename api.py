@@ -36,7 +36,6 @@ def list_organizations():
     return tts_result
 
 def list_repo_contributors(repo):
-    repo = g.get_repo(repo.full_name)
     print("repo to search", repo)
     contributors = repo.get_contributors()
     tts_result = ""
@@ -45,7 +44,6 @@ def list_repo_contributors(repo):
     return tts_result
 
 def list_repo_commits(repo):
-    repo = g.get_repo(repo.full_name)
     commits = repo.get_commits()
     tts_result = ""
     for commit in commits:
@@ -79,10 +77,17 @@ def delete_repo(repo):
 
 def confirm_delete_repo(repo):
     try:
-        g.get_repo(repo.full_name).delete()
+        repo.delete()
         return f"Le dépôt '{repo.full_name}' a été supprimé avec succès."
     except Exception as e:
         return f"Le dépôt '{repo.full_name}' n'a pas pu être supprimé. Erreur : {e.data['errors'][0]['message']}"
+
+def list_branches(repo):
+    branches = repo.get_branches()
+    tts_result = ""
+    for branch in branches:
+        tts_result += f",{branch.name}"
+    return tts_result
 
 def greet():
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
@@ -95,7 +100,7 @@ def affirm():
 
 
 
-intent_functions={'greet':greet, 'affirm':affirm, 'list_user_repos':list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors, 'list_repo_commits':list_repo_commits, 'get_number_of_commits':get_number_of_commits, 'create_repo':create_repo, 'delete_repo':delete_repo, 'confirm_delete_repo':confirm_delete_repo}
+intent_functions={'greet':greet, 'affirm':affirm, 'list_user_repos':list_user_repos, 'list_organizations':list_organizations, 'list_repo_contributors':list_repo_contributors, 'list_repo_commits':list_repo_commits, 'get_number_of_commits':get_number_of_commits, 'create_repo':create_repo, 'delete_repo':delete_repo, 'confirm_delete_repo':confirm_delete_repo, 'list_branches':list_branches}
 
 if __name__ == "__main__":
     print(get_number_of_commits("robinlafage/RMI"))

@@ -2,7 +2,7 @@
 
 ## Features
 
-- [ ] Create / delete repository  
+- [x] Create / delete repository  
 - [ ] Create / delete organization  
 - [x] List user’s organizations  
 - [x] List user’s / organization’s repositories  
