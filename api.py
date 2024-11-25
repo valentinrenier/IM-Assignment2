@@ -97,6 +97,13 @@ def list_branches(repo):
         tts_result += f",{branch.name}"
     return tts_result
 
+def create_branch(repo, branch):
+    try:
+        repo.create_git_ref(ref=f"refs/heads/{branch}", sha=repo.get_branch('master').commit.sha)
+        return f"La branche '{branch}' a été créée avec succès dans le dépôt '{repo.full_name}'."
+    except Exception as e:
+        return f"La branche '{branch}' n'a pas pu être créée. Erreur : {e.data['errors'][0]['message']}"
+
 def greet():
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
 
@@ -144,7 +151,8 @@ intent_functions={'greet':greet,
                   'list_branches':list_branches, 
                   'deny':deny,
                   'not_sure_of_the_intent':not_sure_of_the_intent,
-                  'intent_not_understood':intent_not_understood}
+                  'intent_not_understood':intent_not_understood,
+                  'create_branch':create_branch}
 
-if __name__ == "__main__":
-    print(get_number_of_commits("robinlafage/RMI"))
+if __name__ == '__main__':
+    create_branch(g.get_repo('imaccount/test'), 'test_branch')

@@ -154,6 +154,26 @@ nlu:
     - Montre les branches de [config-files](repo)
     - Quelles sont les branches de [research-data](repo)
 
+- intent: create_branch
+  examples: |
+    - Crée une nouvelle branche [ma-branche](branch) dans [mon-depot](repo)
+    - Ajoute une branche [branche-x](branch) à [projet-x](repo)
+    - Je veux une nouvelle branche [alpha-branch](branch) dans [sandbox](repo)
+    - Crée une branche [demo-branch](branch) dans [codebase](repo)
+    - Ajoute une branche [test-branch](branch) à [test-repository](repo)
+    - Je veux une nouvelle branche [dev-branch](branch) dans [dev-project](repo)
+    - Crée une branche [main-branch](branch) dans [main-repo](repo)
+    - Ajoute une branche [open-branch](branch) à [open-source](repo)
+    - Je veux une nouvelle branche [framework-branch](branch) dans [framework-alpha](repo)
+    - Crée une branche [service-branch](branch) dans [service-api](repo)
+    - Ajoute une branche [analytics-branch](branch) à [analytics-tool](repo)
+    - Je veux une nouvelle branche [mobile-branch](branch) dans [mobile-app](repo)
+    - Crée une branche [config-branch](branch) dans [config-files](repo)
+    - Ajoute une branche [research-branch](branch) à [research-data](repo)
+
 - regex: repo
   examples: |
     - [a-zA-Z] 
+- regex: branch
+  examples: |
+    - [a-zA-Z]

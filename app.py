@@ -30,12 +30,13 @@ def get_intent_from_text(text):
             else : 
                 function_to_call = intent_functions.get('intent_not_understood')
 
-            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches']
+            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches', 'create_branch']
             intents_with_new_repo = ['create_repo']
+            intents_with_new_branch = ['create_branch']
 
 
             try:
-                repo = response.json().get("entities", [{}])[0].get("value")
+                repo = extract_entities(response.json()).get('repo')
                 if intent in intents_with_repo:
                     repo = get_repo_from_query(repo, user_repos)
                     print(f"Repo détecté : {repo}")
@@ -44,18 +45,27 @@ def get_intent_from_text(text):
                 repo = None
             mapped_repo = {"repo": repo} if repo else {}
 
-            
+            try:
+                branch = extract_entities(response.json()).get('branch')
+            except Exception as e:
+                print("Aucune branche détectée.")
+                branch = None
 
             # Appeler la fonction si elle existe
             if function_to_call:
                 if function_to_call == not_sure_of_the_intent :
                     repo = mapped_repo['repo'] or ''
                     result = function_to_call(intent, repo)
-                elif intent in intents_with_repo or intent in intents_with_new_repo:
+                elif (intent in intents_with_repo or intent in intents_with_new_repo) and intent not in intents_with_new_branch:
                     if mapped_repo == {} :
                         result = intent_functions.get('intent_not_understood')
                     else : 
                         result = function_to_call(mapped_repo['repo'])
+                elif intent in intents_with_new_branch:
+                    if mapped_repo == {} or branch == None:
+                        result = intent_functions.get('intent_not_understood')
+                    else : 
+                        result = function_to_call(mapped_repo['repo'], branch)
                 else:
                     result = function_to_call()
                 tts = gTTS(text=result, lang='fr')

@@ -6,7 +6,7 @@
 - [ ] Create / delete organization  
 - [x] List user’s organizations  
 - [x] List user’s / organization’s repositories  
-- [ ] List / Create / change branch  
+- [x] List / Create / branch  
 - [ ] Search in code  
 - [x] Show commits history  
 - [x] Show repository contributors  
