@@ -91,7 +91,7 @@ def confirm_delete_repo(repo):
 
 def list_branches(repo):
     branches = repo.get_branches()
-    tts_result = ""
+    tts_result = f"Les branches du dépôt {repo.full_name} sont :"
     for branch in branches:
         tts_result += f",{branch.name}"
     return tts_result
@@ -118,6 +118,24 @@ def list_repo_languages(repo):
     tts_result = "Les langages utilisés dans ce dépôt sont :"
     for language in languages:
         tts_result += f",{language}"
+    return tts_result
+
+def search_in_code(repo, query):
+    global next_intent
+    next_intent = 'list_files_found'
+
+    buildQuery = f"{query} repo:{repo.full_name}"
+    results = g.search_code(buildQuery)
+
+    global mapped_repo
+    mapped_repo = {"query": query, "results": results}
+
+    return f"Il y a {len(list(results))} fichiers contenant le mot {query} dans le dépôt {repo.full_name}. Voulez vous que je les énumère ?"
+
+def list_files_found(query, results):
+    tts_result = f"Les fichiers contenant le mot {query} sont :"
+    for result in results:
+        tts_result += f",{result.name}"
     return tts_result
 
 def greet():
@@ -170,7 +188,9 @@ intent_functions={'greet':greet,
                   'intent_not_understood':intent_not_understood,
                   'create_branch':create_branch,
                   'repository_report':repository_report,
-                  'list_repo_languages':list_repo_languages}
+                  'list_repo_languages':list_repo_languages,
+                  'search_in_code':search_in_code,
+                  'list_files_found':list_files_found}
 
 if __name__ == '__main__':
-    print(repository_report(g.get_repo('imaccount/test')))
+    print(search_in_code(g.get_repo('imaccount/test'), 'hello'))

@@ -207,9 +207,36 @@ nlu:
     - Affiche les langages utilisés dans [config-files](repo)
     - Montre les langages utilisés dans [research-data](repo)
 
+- intent: search_in_code
+  examples: |
+    - Recherche le mot [fonction](keyword) dans le dépôt [mon-repo](repo)
+    - Trouve le code contenant [variable](keyword) dans [project-x](repo)
+    - Cherche [fonction](keyword) dans le dépôt nommé [sandbox](repo)
+    - Effectue une recherche de [class](keyword) dans le dépôt [codebase](repo)
+    - Montre-moi où [variable](keyword) est utilisé dans [repo1](repo)
+    - Recherche les occurrences de [constante](keyword) dans [my-repo](repo)
+    - Peux-tu chercher [méthode](keyword) dans le dépôt [library](repo) ?
+    - Trouve-moi tout le code contenant [fichier](keyword) dans [test-repo](repo)
+    - Localise les parties du code mentionnant [endpoint](keyword) dans [api-project](repo)
+    - Effectue une recherche pour [clé](keyword) dans le dépôt [repo](repo)
+    - Fais une recherche pour [class](keyword) dans le code de [projet-alpha](repo)
+    - Où trouve-t-on [main](keyword) dans le dépôt [legacy-code](repo) ?
+    - Montre les fichiers contenant [init](keyword) dans [my-codebase](repo)
+    - Affiche tous les résultats pour [config](keyword) dans le dépôt [configurations](repo)
+    - Je veux voir tout le code avec [data](keyword) dans le dépôt [app-repo](repo)
+    - Cherche où [print](keyword) est utilisé dans [backend-service](repo)
+    - Localise les occurrences de [util](keyword) dans [frontend-repo](repo)
+    - Liste tout ce qui contient [script](keyword) dans [demo-repo](repo)
+    - Où est mentionné [token](keyword) dans [auth-service](repo) ?
+    - Trouve [log](keyword) dans [system-repo](repo)
+
+
 - regex: repo
   examples: |
     - [a-zA-Z] 
 - regex: branch
+  examples: |
+    - [a-zA-Z]
+- regex: keyword
   examples: |
     - [a-zA-Z]

@@ -14,6 +14,7 @@ entities:
  - repo  # Ajout de l'entité pour les dépôts
  - orga
  - branch
+ - keyword
 
 slots:
   repo:  # Ajout du slot pour stocker le nom du dépôt
@@ -34,6 +35,12 @@ slots:
     mappings:
     - type: from_entity
       entity: branch
+  keyword:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: keyword
 
 responses:
   utter_greet:
