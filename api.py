@@ -111,7 +111,7 @@ def repository_report(repo):
     creation_date = repo.created_at.strftime("%d/%m/%Y")
     description = f"La description du dépôt est : {repo.description}" if repo.description else ""
 
-    return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {', '.join(list(languages))}. {description}"
+    return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {len(list(languages))} langages différents. {description}"
 
 def list_repo_languages(repo):
     languages = repo.get_languages()
