@@ -171,6 +171,42 @@ nlu:
     - Crée une branche [config-branch](branch) dans [config-files](repo)
     - Ajoute une branche [research-branch](branch) à [research-data](repo)
 
+- intent: repository_report
+  examples: |
+    - Génère un rapport pour [mon-depot](repo)
+    - Crée un rapport pour [projet-x](repo)
+    - Je veux un rapport pour [sandbox](repo)
+    - Génère un rapport pour [demo-repo](repo)
+    - Crée un rapport pour [codebase](repo)
+    - Je veux un rapport pour [test-repository](repo)
+    - Génère un rapport pour [dev-project](repo)
+    - Crée un rapport pour [main-repo](repo)
+    - Je veux un rapport pour [open-source](repo)
+    - Génère un rapport pour [framework-alpha](repo)
+    - Crée un rapport pour [service-api](repo)
+    - Je veux un rapport pour [analytics-tool](repo)
+    - Génère un rapport pour [mobile-app](repo)
+    - Crée un rapport pour [config-files](repo)
+    - Je veux un rapport pour [research-data](repo)
+
+- intent: list_repo_languages
+  examples: |
+    - Quels sont les langages utilisés dans [mon-depot](repo)
+    - Liste tous les langages utilisés dans [projet-x](repo)
+    - Montre moi les langages utilisés dans [sandbox](repo)
+    - Quels langages sont utilisés dans [demo-repo](repo)
+    - Donne moi les langages utilisés dans [codebase](repo)
+    - Affiche les langages utilisés dans [test-repository](repo)
+    - Montre les langages utilisés dans [dev-project](repo)
+    - Quels sont les langages utilisés dans [main-repo](repo)
+    - Donne moi les langages utilisés dans [open-source](repo)
+    - Affiche les langages utilisés dans [framework-alpha](repo)
+    - Montre les langages utilisés dans [service-api](repo)
+    - Quels sont les langages utilisés dans [analytics-tool](repo)
+    - Donne moi les langages utilisés dans [mobile-app](repo)
+    - Affiche les langages utilisés dans [config-files](repo)
+    - Montre les langages utilisés dans [research-data](repo)
+
 - regex: repo
   examples: |
     - [a-zA-Z] 

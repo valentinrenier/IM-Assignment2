@@ -60,7 +60,6 @@ def get_number_of_commits(repo):
     global mapped_repo
     mapped_repo = {"repo": repo}
 
-    repo = g.get_repo(repo.full_name)
     commits = repo.get_commits()
     return "Il y a " + str(len(list(commits))) + " commits dans le dépôt " + repo.full_name + ". Voulez-vous que j'énonce la liste des commits ?"
 
@@ -103,6 +102,23 @@ def create_branch(repo, branch):
         return f"La branche '{branch}' a été créée avec succès dans le dépôt '{repo.full_name}'."
     except Exception as e:
         return f"La branche '{branch}' n'a pas pu être créée. Erreur : {e.data['errors'][0]['message']}"
+
+def repository_report(repo):
+    contributors = repo.get_contributors()
+    commits = repo.get_commits()
+    branches = repo.get_branches()
+    languages = repo.get_languages()
+    creation_date = repo.created_at.strftime("%d/%m/%Y")
+    description = f"La description du dépôt est : {repo.description}" if repo.description else ""
+
+    return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {', '.join(list(languages))}. {description}"
+
+def list_repo_languages(repo):
+    languages = repo.get_languages()
+    tts_result = "Les langages utilisés dans ce dépôt sont :"
+    for language in languages:
+        tts_result += f",{language}"
+    return tts_result
 
 def greet():
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
@@ -152,7 +168,9 @@ intent_functions={'greet':greet,
                   'deny':deny,
                   'not_sure_of_the_intent':not_sure_of_the_intent,
                   'intent_not_understood':intent_not_understood,
-                  'create_branch':create_branch}
+                  'create_branch':create_branch,
+                  'repository_report':repository_report,
+                  'list_repo_languages':list_repo_languages}
 
 if __name__ == '__main__':
-    create_branch(g.get_repo('imaccount/test'), 'test_branch')
+    print(repository_report(g.get_repo('imaccount/test')))

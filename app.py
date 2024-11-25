@@ -30,7 +30,7 @@ def get_intent_from_text(text):
             else : 
                 function_to_call = intent_functions.get('intent_not_understood')
 
-            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches', 'create_branch']
+            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches', 'create_branch', 'repository_report', 'list_repo_languages']
             intents_with_new_repo = ['create_repo']
             intents_with_new_branch = ['create_branch']
 
