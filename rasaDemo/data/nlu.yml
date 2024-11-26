@@ -229,6 +229,19 @@ nlu:
     - Liste tout ce qui contient [script](keyword) dans [demo-repo](repo)
     - Où est mentionné [token](keyword) dans [auth-service](repo) ?
     - Trouve [log](keyword) dans [system-repo](repo)
+    
+- intent: subscribe_repo
+  examples: |
+    - Abonne-toi au dépôt [test](repo)
+    - Souscris au dépôt [IAP](repo)
+    - Je veux m’abonner au dépôt [PyGithub](repo)
+    - Ajoute un abonnement au dépôt [NE430](repo)
+    - Inscris-moi au dépôt [Customer](repo)
+    - Abonne-toi au dépôt [PyGithub](repo)
+    - Souscris au dépôt [IAP](repo)
+    - Je veux m’abonner au dépôt [test](repo)
+    - Ajoute un abonnement au dépôt [Customer](repo)
+    - Inscris-moi au dépôt [NE430](repo)
 
 
 - regex: repo

@@ -9,12 +9,14 @@ intents:
  - delete_repo
  - create_organization
  - delete_organization
+ - subscribe_repo
 
 entities:
  - repo  # Ajout de l'entité pour les dépôts
  - orga
  - branch
  - keyword
+ - subscribe-repo
 
 slots:
   repo:  # Ajout du slot pour stocker le nom du dépôt

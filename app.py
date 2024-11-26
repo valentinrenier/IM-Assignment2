@@ -30,7 +30,15 @@ def get_intent_from_text(text):
             else : 
                 function_to_call = intent_functions.get('intent_not_understood')
 
-            intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches', 'create_branch', 'repository_report', 'list_repo_languages', 'search_in_code']
+            intents_with_repo = ['list_repo_contributors', 
+                                 'list_repo_commits', 
+                                 'get_number_of_commits', 
+                                 'delete_repo',
+                                 'list_branches', 
+                                 'create_branch', 
+                                 'repository_report', 
+                                 'list_repo_languages', 
+                                 'search_in_code']
             intents_with_new_repo = ['create_repo']
             intents_with_2_args = ['create_branch', 'search_in_code']
 
@@ -74,6 +82,11 @@ def get_intent_from_text(text):
                         result = intent_functions.get('intent_not_understood')
                     else : 
                         result = function_to_call(mapped_repo['repo'], arg2)
+                elif function_to_call == subscribe_repo :
+                    if mapped_repo == {} :
+                        result = intent_functions.get('intent_not_understood')
+                    else :
+                        result = function_to_call(mapped_repo['repo'])
                 else:
                     result = function_to_call()
                 tts = gTTS(text=result, lang='fr')

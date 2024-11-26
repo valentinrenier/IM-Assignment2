@@ -2,6 +2,7 @@ from github import Github
 from github import Auth
 from secret import token
 import inspect
+from util import get_repo_from_query
 
 # using an access token
 auth = Auth.Token(token)
@@ -171,7 +172,34 @@ def intent_not_understood():
     return "Je suis désolé, mais je n'ai pas réussi à interpréter votre demande. Pouvez vous répéter s'il vous plaît ?"
 
 
+def subscribe_repo(repo):
+    print(repo)
+    repo = get_repo_from_query(repo, subscribe_repo_list)
+    repo = subscribe_repo_dict.get(repo)
+    print(repo)
 
+    repository = g.get_repo(repo)
+    url = f"https://api.github.com/user/starred/{repo}"
+
+    # Effectuer la requête pour s'abonner
+    try : 
+        response = repository._requester.requestJsonAndCheck(
+            "PUT", url, input={"subscribed": True, "ignored": False}
+        )
+    except : 
+        print(f'Failed : {response}')
+        return 'Action failed'
+    return f'Vous êtes désormais abonné au repository {repo}'
+
+
+
+subscribe_repo_dict = { 'test':'imaccount/test',
+                        'IAP':'valentinrenier/IAP-ES',
+                        'PyGithub':'PyGithub/PyGithub',
+                        'NE430':'valentinrenier/NE430',
+                        'Customer':'UA-TopTable/TopTableCustomerAPI'}
+
+subscribe_repo_list=list(subscribe_repo_dict.keys())
 
 intent_functions={'greet':greet, 
                   'affirm':affirm, 
@@ -190,7 +218,8 @@ intent_functions={'greet':greet,
                   'repository_report':repository_report,
                   'list_repo_languages':list_repo_languages,
                   'search_in_code':search_in_code,
-                  'list_files_found':list_files_found}
+                  'list_files_found':list_files_found,
+                  'subscribe_repo':subscribe_repo}
 
 if __name__ == '__main__':
     print(search_in_code(g.get_repo('imaccount/test'), 'hello'))
