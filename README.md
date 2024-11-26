@@ -9,7 +9,7 @@
 - [x] Search in code  
 - [x] Show commits history  
 - [x] Show repository contributors  
-- [ ] Subscribe to a repository  
+- [x] Subscribe to a repository  
 - [x] Repository report
 - [x] List repository languages
 

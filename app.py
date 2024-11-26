@@ -12,9 +12,13 @@ app = Flask(__name__)
 CORS(app)
 
 def get_intent_from_text(text):
+    intents_with_repo = ['list_repo_contributors', 'list_repo_commits', 'get_number_of_commits', 'delete_repo', 'list_branches', 'create_branch', 'repository_report', 'list_repo_languages','search_in_code']
+    intents_with_new_repo = ['create_repo']
+    intents_with_2_args = ['create_branch', 'search_in_code']
     rasa_ip = 'localhost'
     rasa_url = f"http://{rasa_ip}:5005/model/parse"  # URL de l'API de Rasa
     payload = {"text": text}
+
     try :
         response = requests.post(rasa_url, json=payload)
         if response.status_code == 200:
@@ -29,18 +33,6 @@ def get_intent_from_text(text):
                 function_to_call = intent_functions.get('not_sure_of_the_intent')
             else : 
                 function_to_call = intent_functions.get('intent_not_understood')
-
-            intents_with_repo = ['list_repo_contributors', 
-                                 'list_repo_commits', 
-                                 'get_number_of_commits', 
-                                 'delete_repo',
-                                 'list_branches', 
-                                 'create_branch', 
-                                 'repository_report', 
-                                 'list_repo_languages', 
-                                 'search_in_code']
-            intents_with_new_repo = ['create_repo']
-            intents_with_2_args = ['create_branch', 'search_in_code']
 
 
             try:
@@ -99,10 +91,8 @@ def get_intent_from_text(text):
 
                 # Charger et jouer le fichier audio
                 try :
-                    print('Reading the mp3')
                     pygame.mixer.music.load("message.mp3")
                     pygame.mixer.music.play()
-                    print("finished reading the mp3")
                 except Exception as e :
                     print(f"Could not read the message : {e}")
             else:
