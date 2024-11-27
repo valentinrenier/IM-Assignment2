@@ -116,7 +116,7 @@ def repository_report(repo):
 
 def list_repo_languages(repo):
     languages = repo.get_languages()
-    tts_result = "Les langages utilisés dans ce dépôt sont :"
+    tts_result = f"Les langages utilisés dans le dépôt {repo.name} sont :"
     for language in languages:
         tts_result += f",{language}"
     return tts_result
