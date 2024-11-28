@@ -18,6 +18,8 @@ next_intent = None
 mapped_repo = None
 
 def list_user_repos():
+    global next_intent
+    next_intent = None
     repo_list = []
     tts_result = ""
     global user_repos
@@ -30,6 +32,8 @@ def list_user_repos():
     return tts_result
 
 def list_organizations():
+    global next_intent
+    next_intent = None
     orgs_list = []
     tts_result = ""
     for org in g.get_user().get_orgs():
@@ -41,7 +45,8 @@ def list_organizations():
     return tts_result
 
 def list_repo_contributors(repo):
-    print("repo to search", repo)
+    global next_intent
+    next_intent = None
     contributors = repo.get_contributors()
     tts_result = ""
     for contributor in contributors:
@@ -49,6 +54,8 @@ def list_repo_contributors(repo):
     return tts_result
 
 def list_repo_commits(repo):
+    global next_intent
+    next_intent = None
     commits = repo.get_commits()
     tts_result = ""
     for commit in commits:
@@ -65,6 +72,8 @@ def get_number_of_commits(repo):
     return "Il y a " + str(len(list(commits))) + " commits dans le dépôt " + repo.full_name + ". Voulez-vous que j'énonce la liste des commits ?"
 
 def create_repo(repo):
+    global next_intent
+    next_intent = None
     try:
         g.get_user().create_repo(repo)
         global user_repos
@@ -82,6 +91,8 @@ def delete_repo(repo):
     return f"Voulez-vous vraiment supprimer le dépôt {repo.full_name} ?"
 
 def confirm_delete_repo(repo):
+    global next_intent
+    next_intent = None
     try:
         repo.delete()
         global user_repos
@@ -91,6 +102,8 @@ def confirm_delete_repo(repo):
         return f"Le dépôt '{repo.full_name}' n'a pas pu être supprimé. Erreur : {e.data['errors'][0]['message']}"
 
 def list_branches(repo):
+    global next_intent
+    next_intent = None
     branches = repo.get_branches()
     tts_result = f"Les branches du dépôt {repo.full_name} sont :"
     for branch in branches:
@@ -98,6 +111,8 @@ def list_branches(repo):
     return tts_result
 
 def create_branch(repo, branch):
+    global next_intent
+    next_intent = None
     try:
         repo.create_git_ref(ref=f"refs/heads/{branch}", sha=repo.get_branch('master').commit.sha)
         return f"La branche '{branch}' a été créée avec succès dans le dépôt '{repo.full_name}'."
@@ -105,6 +120,8 @@ def create_branch(repo, branch):
         return f"La branche '{branch}' n'a pas pu être créée. Erreur : {e.data['errors'][0]['message']}"
 
 def repository_report(repo):
+    global next_intent
+    next_intent = None
     contributors = repo.get_contributors()
     commits = repo.get_commits()
     branches = repo.get_branches()
@@ -115,6 +132,8 @@ def repository_report(repo):
     return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {len(list(languages))} langages différents. {description}"
 
 def list_repo_languages(repo):
+    global next_intent
+    next_intent = None
     languages = repo.get_languages()
     tts_result = f"Les langages utilisés dans le dépôt {repo.name} sont :"
     for language in languages:
@@ -134,12 +153,35 @@ def search_in_code(repo, query):
     return f"Il y a {len(list(results))} fichiers contenant le mot {query} dans le dépôt {repo.full_name}. Voulez vous que je les énumère ?"
 
 def list_files_found(query, results):
+    global next_intent
+    next_intent = None
     tts_result = f"Les fichiers contenant le mot {query} sont :"
     for result in results:
         tts_result += f",{result.name}"
-    return tts_result
+        texte_adapte = tts_result.replace(".", " point ")
+    return texte_adapte
+
+
+def subscribe_repo(repo):
+    repo = get_repo_from_query(repo, subscribe_repo_list)
+    repo = subscribe_repo_dict.get(repo)
+
+    repository = g.get_repo(repo)
+    url = f"https://api.github.com/user/starred/{repo}"
+
+    # Effectuer la requête pour s'abonner
+    try : 
+        response = repository._requester.requestJsonAndCheck(
+            "PUT", url, input={"subscribed": True, "ignored": False}
+        )
+    except : 
+        print(f'Failed : {response}')
+        return 'Action failed'
+    return f'Vous êtes désormais abonné au repository {repo}'
 
 def greet():
+    global next_intent
+    next_intent = None
     return "Bonjour, comment puis-je vous aider aujourd'hui ?"
 
 def affirm():
@@ -166,31 +208,12 @@ def not_sure_of_the_intent(intent, parameter):
     global mapped_repo
     if not parameter is None :
         mapped_repo = {"repo": parameter['repo']}
-        return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]} : {parameter['repo']}'
+        repo = parameter['repo']
+        return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]} : {repo}'
     return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]}'
 
 def intent_not_understood():
     return "Je suis désolé, mais je n'ai pas réussi à interpréter votre demande. Pouvez vous répéter s'il vous plaît ?"
-
-
-def subscribe_repo(repo):
-    print(repo)
-    repo = get_repo_from_query(repo, subscribe_repo_list)
-    repo = subscribe_repo_dict.get(repo)
-    print(repo)
-
-    repository = g.get_repo(repo)
-    url = f"https://api.github.com/user/starred/{repo}"
-
-    # Effectuer la requête pour s'abonner
-    try : 
-        response = repository._requester.requestJsonAndCheck(
-            "PUT", url, input={"subscribed": True, "ignored": False}
-        )
-    except : 
-        print(f'Failed : {response}')
-        return 'Action failed'
-    return f'Vous êtes désormais abonné au repository {repo}'
 
 
 

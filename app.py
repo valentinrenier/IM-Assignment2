@@ -66,21 +66,22 @@ def get_intent_from_text(text):
                     result = function_to_call(intent, repo)
                 elif (intent in intents_with_repo or intent in intents_with_new_repo) and intent not in intents_with_2_args:
                     if mapped_repo == {} :
-                        result = intent_functions.get('intent_not_understood')
+                        result = intent_functions.get('intent_not_understood')()
                     else : 
                         result = function_to_call(mapped_repo['repo'])
                 elif intent in intents_with_2_args:
                     if mapped_repo == {} or arg2 == None:
-                        result = intent_functions.get('intent_not_understood')
+                        result = intent_functions.get('intent_not_understood')()
                     else : 
                         result = function_to_call(mapped_repo['repo'], arg2)
                 elif function_to_call == subscribe_repo :
                     if mapped_repo == {} :
-                        result = intent_functions.get('intent_not_understood')
+                        result = intent_functions.get('intent_not_understood')()
                     else :
                         result = function_to_call(mapped_repo['repo'])
                 else:
                     result = function_to_call()
+
                 tts = gTTS(text=result, lang='fr')
 
                 # Sauvegarder le fichier audio
@@ -96,7 +97,7 @@ def get_intent_from_text(text):
                 except Exception as e :
                     print(f"Could not read the message : {e}")
             else:
-                print("Intent non pris en charge.")
+                result = intent_functions.get('intent_not_understood')
             return intent
         else:
             print("Erreur lors de la connexion à l'API Rasa")
