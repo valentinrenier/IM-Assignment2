@@ -13,6 +13,5 @@
 - [x] Repository report
 - [x] List repository languages
 
-- Personnaliser les messages de no comprendo
 
 [Slides](https://docs.google.com/presentation/d/1Kxq10TodozaNQvFB-rA5qrCC0_Gy8O8n9J7CYIAGqBc/edit#slide=id.g312ebf66087_0_0)
