@@ -166,7 +166,8 @@ def not_sure_of_the_intent(intent, parameter):
     global mapped_repo
     if not parameter is None :
         mapped_repo = {"repo": parameter['repo']}
-    return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent}'
+        return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]} : {parameter['repo']}'
+    return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]}'
 
 def intent_not_understood():
     return "Je suis désolé, mais je n'ai pas réussi à interpréter votre demande. Pouvez vous répéter s'il vous plaît ?"
@@ -208,7 +209,8 @@ intent_functions={'greet':greet,
                   'list_repo_contributors':list_repo_contributors, 
                   'list_repo_commits':list_repo_commits, 
                   'get_number_of_commits':get_number_of_commits, 
-                  'create_repo':create_repo, 'delete_repo':delete_repo, 
+                  'create_repo':create_repo, 
+                  'delete_repo':delete_repo, 
                   'confirm_delete_repo':confirm_delete_repo, 
                   'list_branches':list_branches, 
                   'deny':deny,
@@ -220,6 +222,25 @@ intent_functions={'greet':greet,
                   'search_in_code':search_in_code,
                   'list_files_found':list_files_found,
                   'subscribe_repo':subscribe_repo}
+
+intent_functions_userfriendly={ 'greet':"saluer", 
+                                'affirm':"affirmer", 
+                                'list_user_repos':"Lister vos dépôts", 
+                                'list_organizations':"Lister vos organisations", 
+                                'list_repo_contributors':"Lister les contributeurs du dépôt", 
+                                'list_repo_commits':"Lister les changements du dépôt", 
+                                'get_number_of_commits':"Lister le nombre de changements du dépôt", 
+                                'create_repo':"Créer le dépôt", 
+                                'delete_repo':"Supprimer le dépôt", 
+                                'list_branches':"Lister les branches du dépôt", 
+                                'deny':"refuser",
+                                'create_branch':"Créer la branche",
+                                'repository_report':"créer un rapport du dépôt",
+                                'list_repo_languages':"lister les langues du dépôt",
+                                'search_in_code':"Chercher dans le code",
+                                'list_files_found':"Lister les fichiers trouvés",
+                                'subscribe_repo':"S'abonner au dépôt"}
+
 
 if __name__ == '__main__':
     print(search_in_code(g.get_repo('imaccount/test'), 'hello'))
