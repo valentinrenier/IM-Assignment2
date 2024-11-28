@@ -207,8 +207,10 @@ def not_sure_of_the_intent(intent, parameter):
     next_intent = intent
     global mapped_repo
     if not parameter is None :
-        mapped_repo = {"repo": parameter['repo']}
-        repo = parameter['repo']
+        mapped_repo = {"repo": parameter}
+        repo = parameter
+        if not isinstance(repo, str):
+            repo = str(repo.full_name) 
         return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]} : {repo}'
     return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]}'
 
