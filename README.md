@@ -17,8 +17,8 @@ rasa train
 cd ..
 ```
 
-[!IMPORTANT]
-Create a file 'secret.py' in the same directory than the 'app.py' file and paste your github access_token inside the 'secret.py' file.
+> [!IMPORTANT]  
+> Create a file 'secret.py' in the same directory than the 'app.py' file and paste your github access_token inside the 'secret.py' file.
 
 Run the assistant : 
 ```
