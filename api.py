@@ -211,8 +211,8 @@ def not_sure_of_the_intent(intent, parameter):
         repo = parameter
         if not isinstance(repo, str):
             repo = str(repo.full_name) 
-        return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]} : {repo}'
-    return f'Je ne suis pas sûr d\'avoir compris, voulez vous effectuer l\'action {intent_functions_userfriendly[intent]}'
+        return f'Je ne suis pas sûr d\'avoir compris, voulez vous {intent_functions_userfriendly[intent]} : {repo} ?'
+    return f'Je ne suis pas sûr d\'avoir compris, voulez vous {intent_functions_userfriendly[intent]} ?'
 
 def intent_not_understood():
     return "Je suis désolé, mais je n'ai pas réussi à interpréter votre demande. Pouvez vous répéter s'il vous plaît ?"
