@@ -18,7 +18,7 @@ cd ..
 ```
 
 > [!IMPORTANT]  
-> Create a file 'secret.py' in the same directory than the 'app.py' file and paste your github access_token inside the 'secret.py' file.
+> Create a file 'secret.py' in the same directory than the 'app.py' file and paste your github access_token inside the 'secret.py' file, because the application won't be able to work without being authenticated.
 
 Run the assistant : 
 ```
