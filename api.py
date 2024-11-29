@@ -3,6 +3,7 @@ from github import Auth
 from secret import token
 import inspect
 from util import get_repo_from_query
+import json
 
 # using an access token
 auth = Auth.Token(token)
@@ -120,16 +121,19 @@ def create_branch(repo, branch):
         return f"La branche '{branch}' n'a pas pu être créée. Erreur : {e.data['errors'][0]['message']}"
 
 def repository_report(repo):
-    global next_intent
-    next_intent = None
-    contributors = repo.get_contributors()
-    commits = repo.get_commits()
-    branches = repo.get_branches()
-    languages = repo.get_languages()
-    creation_date = repo.created_at.strftime("%d/%m/%Y")
-    description = f"La description du dépôt est : {repo.description}" if repo.description else ""
+    try:
+        global next_intent
+        next_intent = None
+        contributors = repo.get_contributors()
+        commits = repo.get_commits()
+        branches = repo.get_branches()
+        languages = repo.get_languages()
+        creation_date = repo.created_at.strftime("%d/%m/%Y")
+        description = f"La description du dépôt est : {repo.description}" if repo.description else ""
 
-    return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {len(list(languages))} langages différents. {description}"
+        return f"Le dépôt {repo.full_name}, créé le {creation_date}, contient {len(list(contributors))} contributeurs, {len(list(commits))} commits, {len(list(branches))} branches et est écrit en {len(list(languages))} langages différents. {description}"
+    except Exception as e:
+        return f"Le rapport du dépôt {repo.full_name} n'a pas pu être généré. Erreur : {e.data['message']}"
 
 def list_repo_languages(repo):
     global next_intent
