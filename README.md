@@ -1,5 +1,32 @@
 # IM-Assignment2
 
+## How to run the code
+
+Install the dependancies by running the following commands : 
+
+```
+python3 -m venv ./rasa-env
+source rasa-env/bin/activate
+pip install -r requirements.txt
+```
+
+Train Rasa :
+```
+cd rasaDemo
+rasa train
+cd ..
+```
+
+Run the assistant : 
+```
+./run.sh
+```
+
+Stop the assistant : 
+```
+./stop.sh
+```
+
 ## Features
 
 - [x] Create / delete repository  
@@ -14,4 +41,3 @@
 - [x] List repository languages
 
 
-[Slides](https://docs.google.com/presentation/d/1Kxq10TodozaNQvFB-rA5qrCC0_Gy8O8n9J7CYIAGqBc/edit#slide=id.g312ebf66087_0_0)
