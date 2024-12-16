@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-branch",
+      "2": "I-branch",
+      "3": "L-branch",
+      "4": "U-branch",
+      "5": "B-keyword",
+      "6": "I-keyword",
+      "7": "L-keyword",
+      "8": "U-keyword",
+      "9": "B-repo",
+      "10": "I-repo",
+      "11": "L-repo",
+      "12": "U-repo",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-branch": 1,
+      "I-branch": 2,
+      "L-branch": 3,
+      "U-branch": 4,
+      "B-keyword": 5,
+      "I-keyword": 6,
+      "L-keyword": 7,
+      "U-keyword": 8,
+      "B-repo": 9,
+      "I-repo": 10,
+      "L-repo": 11,
+      "U-repo": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

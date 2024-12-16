@@ -1,0 +1,6 @@
+[
+  {
+    "name": "repo",
+    "pattern": "(\\bNE424\\b|\\bNE441\\b|\\bos\\ 430\\b)"
+  }
+]

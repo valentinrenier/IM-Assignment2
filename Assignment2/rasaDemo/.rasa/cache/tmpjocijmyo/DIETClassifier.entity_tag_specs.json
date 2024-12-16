@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-orga",
+      "2": "I-orga",
+      "3": "L-orga",
+      "4": "U-orga",
+      "5": "B-repo",
+      "6": "I-repo",
+      "7": "L-repo",
+      "8": "U-repo",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-orga": 1,
+      "I-orga": 2,
+      "L-orga": 3,
+      "U-orga": 4,
+      "B-repo": 5,
+      "I-repo": 6,
+      "L-repo": 7,
+      "U-repo": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

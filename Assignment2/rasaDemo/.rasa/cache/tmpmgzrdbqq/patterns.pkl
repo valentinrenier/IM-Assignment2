@@ -1,0 +1,14 @@
+[
+  {
+    "name": "branch",
+    "pattern": "[a-zA-Z]"
+  },
+  {
+    "name": "keyword",
+    "pattern": ".+"
+  },
+  {
+    "name": "repo",
+    "pattern": "[a-zA-Z]"
+  }
+]

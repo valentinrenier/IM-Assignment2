@@ -1,0 +1,20 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-repo",
+      "2": "I-repo",
+      "3": "L-repo",
+      "4": "U-repo",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-repo": 1,
+      "I-repo": 2,
+      "L-repo": 3,
+      "U-repo": 4,
+      "O": 0
+    },
+    "num_tags": 5
+  }
+]

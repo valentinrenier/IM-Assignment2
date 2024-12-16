@@ -1,0 +1,10 @@
+[
+  {
+    "name": "branch",
+    "pattern": "[a-zA-Z]"
+  },
+  {
+    "name": "repo",
+    "pattern": "[a-zA-Z]"
+  }
+]

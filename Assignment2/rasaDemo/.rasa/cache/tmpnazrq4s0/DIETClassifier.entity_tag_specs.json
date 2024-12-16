@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-branch",
+      "2": "I-branch",
+      "3": "L-branch",
+      "4": "U-branch",
+      "5": "B-repo",
+      "6": "I-repo",
+      "7": "L-repo",
+      "8": "U-repo",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-branch": 1,
+      "I-branch": 2,
+      "L-branch": 3,
+      "U-branch": 4,
+      "B-repo": 5,
+      "I-repo": 6,
+      "L-repo": 7,
+      "U-repo": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

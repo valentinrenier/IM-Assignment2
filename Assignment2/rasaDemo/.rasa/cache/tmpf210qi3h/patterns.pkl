@@ -1,0 +1,6 @@
+[
+  {
+    "name": "repo",
+    "pattern": "[\\dA-Za-z-]+$"
+  }
+]

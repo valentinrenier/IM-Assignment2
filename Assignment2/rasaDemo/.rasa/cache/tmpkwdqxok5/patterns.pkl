@@ -1,0 +1,6 @@
+[
+  {
+    "name": "repo",
+    "pattern": "(\\bRI\\-2024\\-G\\-ir_g02\\b|\\bCS351\\b|\\bHTTP\\-Project\\b|\\bCS440\\b|\\bCS443\\b|\\bCS444\\b|\\bEmulateur\\-MIPS\\-C\\b|\\bes\\-todolist\\b|\\bMA421\\b|\\bMini\\-projets\\-de\\-C\\b|\\bMini\\-Projets\\-Haskell\\b|\\bMini\\-Projets\\-RISCV\\b|\\bMini\\-Projets\\-VHDL\\b|\\bNE424\\b|\\bNE441\\b|\\bOS430\\b|\\bProjet\\-HTTP\\b|\\bRI\\b|\\bRMI\\b|\\btableTop\\b|\\bCS440\\b|\\bNE430\\b|\\bTopTableCustomerAPI\\b|\\bTopTableDocs\\b|\\bTopTableStaffAPI\\b|\\bTopTableStaffUI\\b|\\bIM\\-Assignment2\\b)"
+  }
+]
