@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml version="1.0" xmlns="http://www.w3.org/2005/07/scxml">
+  <state id="start">
+    <transition event="start" target="sayHello"/>
+  </state>
+
+  <state id="sayHello">
+    <onentry>
+      <script>
+        console.log("Hello World");
+      </script>
+    </onentry>
+    <transition event="done" target="end"/>
+  </state>
+
+  <state id="end">
+    <final/>
+  </state>
+</scxml>
